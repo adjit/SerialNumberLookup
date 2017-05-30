@@ -8,22 +8,43 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Serial_Number_Lookup.Properties
-{
-
-
+namespace Serial_Number_Lookup.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=METRO-GP1;user id=atawil;password=2388;persist security info=True;Int" +
+            "egrated Security=False;Initial Catalog=METRO;persistsecurityinfo=True;")]
+        public string _dbConnectionString {
+            get {
+                return ((string)(this["_dbConnectionString"]));
+            }
+            set {
+                this["_dbConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Select * From SOP10202 Where CMMTTEXT like \'%{0}%\' and SOPTYPE=3")]
+        public string _dbQuery {
+            get {
+                return ((string)(this["_dbQuery"]));
+            }
+            set {
+                this["_dbQuery"] = value;
             }
         }
     }
