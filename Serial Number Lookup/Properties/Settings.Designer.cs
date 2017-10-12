@@ -12,7 +12,7 @@ namespace Serial_Number_Lookup.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -45,6 +45,18 @@ namespace Serial_Number_Lookup.Properties {
             }
             set {
                 this["_dbQuery"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Select * From SOP10107 Where Tracking_Number=\'{0}\' and SOPTYPE=3")]
+        public string _dbTrxQuery {
+            get {
+                return ((string)(this["_dbTrxQuery"]));
+            }
+            set {
+                this["_dbTrxQuery"] = value;
             }
         }
     }

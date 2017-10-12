@@ -25,20 +25,40 @@ namespace Serial_Number_Lookup
         private void button1_Click(object sender, EventArgs e)
         {
             invoiceNumbers.Clear();
-            string serialNum = serialNumberInput.Text;
+            //string serialNum = serialNumberInput.Text;
             List<string> invoices = new List<string>();
             string connectionString = "Data Source=METRO-GP1;user id=sa;password=frx12gpa;persist security info=True;Integrated Security=False;Initial Catalog=METRO;persistsecurityinfo=True;";
-            invoiceNumberOutput.Text = "Searching...";
+            //invoiceNumberOutput.Text = "Searching...";
 
-            if (serialNumberInput.TextLength == 0)
+            string query = Properties.Settings.Default._dbQuery;
+
+            if (serialNumberInput.TextLength > 0 && trackingNumberInput.TextLength > 0)
             {
-                MessageBox.Show("Please Input a Serial Number");
+                MessageBox.Show("Please input either a Serial Number OR Tracking Number");
+                return;
+            }
+            else if (serialNumberInput.TextLength > 0)
+            {
+                query = Properties.Settings.Default._dbQuery;
+                query = string.Format(query, serialNumberInput.Text.Trim());
+            }
+            else if (trackingNumberInput.TextLength > 0)
+            {
+                query = Properties.Settings.Default._dbTrxQuery;
+                query = string.Format(query, trackingNumberInput.Text.Trim());
+            }
+            else
+            {
+                MessageBox.Show("Please input a value into either field");
                 return;
             }
 
-            string query = Properties.Settings.Default._dbQuery;
-            query = string.Format(query, serialNum);
-
+ /*               if (serialNumberInput.TextLength == 0)
+            {
+                MessageBox.Show("Please Input a Serial Number");
+                return;
+            }*/
+            
             SqlConnection dbConnection = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
@@ -56,22 +76,29 @@ namespace Serial_Number_Lookup
 
             if(reader.HasRows)
             {
+                invoiceList.Items.Clear();
                 invoiceNumberOutput.Text = "";
                 while(reader.Read())
                 {
                     counter++;
                     invoiceNumber = reader.GetValue(0).ToString().Trim();
 
-                    if(invoiceNumberOutput.Text.IndexOf(invoiceNumber) < 0)
+                    if (!invoiceNumbers.Contains(invoiceNumber))
+                    {
+                        invoiceNumbers.Add(invoiceNumber);
+                        invoiceList.Items.Add(invoiceNumber);
+                    }
+
+                    /*if(invoiceNumberOutput.Text.IndexOf(invoiceNumber) < 0)
                     {
                         if(counter > 1) invoiceNumberOutput.Text += "; " + invoiceNumber;
                         else invoiceNumberOutput.Text += invoiceNumber;
                         invoiceNumbers.Add(invoiceNumber);
-                    }
+                    }*/
                 }
             }
 
-            if (counter == 0) invoiceNumberOutput.Text = "No results found";
+            if (counter == 0) invoiceList.Items.Add("No results found");
             else openInvoice.Enabled = true;
         }
 
@@ -115,16 +142,31 @@ namespace Serial_Number_Lookup
 
         private void openInvoice_Click(object sender, EventArgs e)
         {
+            ListBox.SelectedObjectCollection soc = invoiceList.SelectedItems;
+
+            for (int i = 0; i < soc.Count; i++)
+            {
+                getInvoiceFile(soc[i].ToString());
+            }
+
+            /******* deprecated *******
+            
             if (invoiceNumbers.Count > 1) getMultipleInvoices();
-            else if (invoiceNumbers.Count == 0) getInvoiceFile(invoiceNumberOutput.Text.ToUpper());
             else getInvoiceFile(invoiceNumbers[0]);
+
+            ***************************/
         }
 
         private void invoiceNumberOutput_TextChanged(object sender, EventArgs e)
         {
             string inputText = invoiceNumberOutput.Text.ToUpper();
-            if (inputText.StartsWith("I") && inputText.Length >= 7) openInvoice.Enabled = true;
-            else openInvoice.Enabled = false;
+            if (inputText.StartsWith("I") && inputText.Length >= 7) openStandaloneInvoice.Enabled = true;
+            else openStandaloneInvoice.Enabled = false;
+        }
+
+        private void openStandaloneInvoice_Click(object sender, EventArgs e)
+        {
+            getInvoiceFile(invoiceNumberOutput.Text.ToUpper());
         }
     }
 }

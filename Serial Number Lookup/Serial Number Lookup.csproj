@@ -25,10 +25,10 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\METRO_MARKET1\1- Deployment\Serial_Number_Lookup\</InstallUrl>
-    <ProductName>Serial Number Lookup</ProductName>
+    <ProductName>Invoice Lookup</ProductName>
     <PublisherName>Aaron Tawil</PublisherName>
-    <ApplicationRevision>14</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>

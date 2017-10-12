@@ -8,5 +8,8 @@
     <Setting Name="_dbQuery" Type="System.String" Scope="User">
       <Value Profile="(Default)">Select * From SOP10202 Where CMMTTEXT like '%{0}%' and SOPTYPE=3</Value>
     </Setting>
+    <Setting Name="_dbTrxQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Select * From SOP10107 Where Tracking_Number='{0}' and SOPTYPE=3</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
