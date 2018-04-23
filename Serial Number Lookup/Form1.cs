@@ -27,7 +27,8 @@ namespace Serial_Number_Lookup
             invoiceNumbers.Clear();
             //string serialNum = serialNumberInput.Text;
             List<string> invoices = new List<string>();
-            string connectionString = "Data Source=METRO-GP1;user id=sa;password=frx12gpa;persist security info=True;Integrated Security=False;Initial Catalog=METRO;persistsecurityinfo=True;";
+            dbConnect db = new dbConnect();
+            string connectionString = db.connection;
             //invoiceNumberOutput.Text = "Searching...";
 
             string query = Properties.Settings.Default._dbQuery;

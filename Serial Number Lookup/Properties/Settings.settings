@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Serial_Number_Lookup.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="_dbConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=METRO-GP1;user id=atawil;password=2388;persist security info=True;Integrated Security=False;Initial Catalog=METRO;persistsecurityinfo=True;</Value>
-    </Setting>
     <Setting Name="_dbQuery" Type="System.String" Scope="User">
       <Value Profile="(Default)">Select * From SOP10202 Where CMMTTEXT like '%{0}%' and SOPTYPE=3</Value>
     </Setting>

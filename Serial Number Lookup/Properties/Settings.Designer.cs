@@ -12,7 +12,7 @@ namespace Serial_Number_Lookup.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,19 +20,6 @@ namespace Serial_Number_Lookup.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=METRO-GP1;user id=atawil;password=2388;persist security info=True;Int" +
-            "egrated Security=False;Initial Catalog=METRO;persistsecurityinfo=True;")]
-        public string _dbConnectionString {
-            get {
-                return ((string)(this["_dbConnectionString"]));
-            }
-            set {
-                this["_dbConnectionString"] = value;
             }
         }
         
